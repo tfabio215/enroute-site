@@ -188,6 +188,10 @@
   <div class="footer-bottom"><span>© 2026 Enroute Imports Inc. All rights reserved.</span><span>Site by <a href="#">Ram Force Global</a></span></div>
 </div></footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+<script src="animations.js"></script>
 <script>
   const nav=document.getElementById('nav'),toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile'),fcta=document.getElementById('floatingCta');
   window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);if(fcta)fcta.classList.toggle('show',window.scrollY>400);},{passive:true});

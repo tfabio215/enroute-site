@@ -43,6 +43,7 @@
   <div class="brand-split">
     <div class="brand-half voila">
       <div class="brand-glow v"></div>
+      <img class="brand-product-img" src="images/voila-canola-1L.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
       <div class="r up" style="position:relative;z-index:1;">
         <p class="eyebrow light">Flagship Brand</p>
         <h2><em>VOILÀ</em></h2>
@@ -63,6 +64,7 @@
     </div>
     <div class="brand-half pranzo">
       <div class="brand-glow p"></div>
+      <img class="brand-product-img" src="images/pranzo-1L.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
       <div class="r up" style="position:relative;z-index:1;">
         <p class="eyebrow light">Premium Brand</p>
         <h2><em>Pranzo</em></h2>
@@ -189,12 +191,13 @@
   <div class="footer-bottom"><span>© 2026 Enroute Imports Inc. All rights reserved.</span><span>Site by <a href="#">Ram Force Global</a></span></div>
 </div></footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+<script src="animations.js"></script>
 <script>
-  const nav=document.getElementById('nav'),toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile'),fcta=document.getElementById('floatingCta');
-  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);if(fcta)fcta.classList.toggle('show',window.scrollY>400);},{passive:true});
+  const toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile');
   toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');});
-  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.07});
-  document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>

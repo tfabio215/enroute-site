@@ -4,14 +4,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enroute Imports Inc. — Healthy Cooking Starts Here</title>
-  <meta name="description" content="Enroute Imports Inc. — Canada's trusted edible oil supplier since 1986. HACCP/GMP Kosher-certified. Canola, EVOO, Sunflower, Non-GMO, Organic oils for retail, food service, and private label.">
+  <meta name="description" content="Canada's trusted edible oil supplier since 1986. HACCP/GMP Kosher-certified. Premium oils for retail, food service, and private label.">
   <link href="stylesheet.css" rel="stylesheet">
+  <style>
+    /* ── Shelf showcase section ── */
+    .shelf-section{
+      position:relative;overflow:hidden;height:520px;
+      background:var(--ink);
+    }
+    .shelf-img{
+      width:100%;height:100%;object-fit:cover;opacity:.55;
+      transform:scale(1.05);
+      transition:transform 8s ease,opacity .6s ease;
+    }
+    .shelf-section:hover .shelf-img{transform:scale(1.0);opacity:.65;}
+    .shelf-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(90deg,rgba(10,9,7,.88) 0%,rgba(10,9,7,.4) 50%,transparent 100%);
+      display:flex;align-items:center;
+    }
+    .shelf-content{
+      max-width:1380px;margin:0 auto;padding:0 40px;
+      width:100%;
+    }
+
+    /* ── Products showcase strip ── */
+    .products-strip{
+      background:var(--ink-soft);
+      padding:80px 0;
+    }
+    .products-strip-inner{
+      max-width:1380px;margin:0 auto;padding:0 40px;
+    }
+    .product-bottles{
+      display:flex;align-items:flex-end;justify-content:center;
+      gap:40px;margin-top:60px;
+    }
+    .bottle-item{
+      display:flex;flex-direction:column;align-items:center;gap:16px;
+      cursor:pointer;
+    }
+    .bottle-item img{
+      height:340px;width:auto;object-fit:contain;
+      filter:drop-shadow(0 30px 50px rgba(10,9,7,.6));
+      transition:transform .5s cubic-bezier(.22,.68,0,1.2),filter .5s ease;
+    }
+    .bottle-item:hover img{
+      transform:translateY(-12px) scale(1.04);
+      filter:drop-shadow(0 44px 60px rgba(10,9,7,.7));
+    }
+    .bottle-label{
+      font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+      color:rgba(255,255,255,.3);text-align:center;
+      transition:color .3s;
+    }
+    .bottle-item:hover .bottle-label{color:var(--gold-light);}
+    .bottle-item.featured img{height:400px;}
+
+    @media(max-width:900px){
+      .shelf-section{height:320px;}
+      .product-bottles{gap:20px;}
+      .bottle-item img{height:220px;}
+      .bottle-item.featured img{height:260px;}
+      .shelf-content{padding:0 24px;}
+      .products-strip-inner{padding:0 24px;}
+    }
+    @media(max-width:600px){
+      .product-bottles{gap:12px;}
+      .bottle-item img{height:160px;}
+      .bottle-item.featured img{height:200px;}
+    }
+  </style>
 </head>
 <body>
 
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+  <div class="page-loader-inner">
+    <div class="loader-logo">Enroute Imports Inc.</div>
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="index.htm" class="nav-logo">Enroute Imports Inc.<small>Premium Food Importers · Est. 1986</small></a>
+    <a href="index.htm" class="nav-logo">
+      <img src="logo.svg" alt="Enroute Imports Inc." style="height:38px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;">Enroute Imports Inc.<small style="display:block;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);font-family:'DM Sans',sans-serif;font-weight:300;margin-top:2px;">Premium Food Importers · Est. 1986</small></span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.htm" class="active">Home</a></li>
       <li><a href="aboutus.php">About</a></li>
@@ -21,7 +105,7 @@
       <li><a href="contactus.php">Contact</a></li>
     </ul>
     <a href="contactus.php" class="nav-cta">Request Specs</a>
-    <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="nav-mobile" id="navMobile">
     <ul>
@@ -35,7 +119,7 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══════════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-canvas"></div>
   <div class="hero-grain"></div>
@@ -57,18 +141,29 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-bottle">
-        <img src="images/Voil.jpg" alt="VOILÀ premium cooking oil" onerror="this.style.display='none';document.getElementById('hph').style.display='flex'">
-        <div class="hero-bottle-ph" id="hph" style="display:none;">VOILÀ · Premium Oils</div>
-        <div class="hero-float-tag">VOILÀ · Retail Brand</div>
+      <div class="hero-bottle-wrap">
+        <div class="hero-bottle-glow"></div>
+        <div class="hero-bottle">
+          <img src="images/pranzo-evoo-1L.jpg" alt="PRANZO Extra Virgin Olive Oil"
+               onerror="this.style.display='none';document.getElementById('hph').style.display='flex'">
+          <div class="hero-bottle-ph" id="hph" style="display:none;">PRANZO · Extra Virgin Olive Oil</div>
+        </div>
+        <div class="hero-float-tag">PRANZO · Premium Blend</div>
       </div>
-      <div class="hero-stat-card"><div class="sn">38+</div><div class="sl">Years of Excellence</div></div>
+      <div class="hero-stat-card">
+        <div class="sn">38+</div>
+        <div class="sl">Years of Excellence</div>
+      </div>
     </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
   </div>
   <div class="hero-slice"></div>
 </section>
 
-<!-- CERT BAR -->
+<!-- ═══ CERT BAR ════════════════════════════════════════════ -->
 <div class="cert-bar">
   <div class="cert-bar-inner">
     <div class="cert-item"><span class="cert-dot"></span><strong>Kosher Certified</strong></div>
@@ -82,91 +177,92 @@
   </div>
 </div>
 
-<!-- MARQUEE -->
+<!-- ═══ MARQUEE ══════════════════════════════════════════════ -->
 <div class="marquee">
   <div class="marquee-track">
     <span>Canola Oil</span><span class="sep">◆</span><span>Extra Virgin Olive Oil</span><span class="sep">◆</span><span>High Oleic Sunflower</span><span class="sep">◆</span><span>Non-GMO Canola</span><span class="sep">◆</span><span>Soybean Oil</span><span class="sep">◆</span><span>Corn Oil</span><span class="sep">◆</span><span>Organic Canola</span><span class="sep">◆</span><span>Private Label Co-Packing</span><span class="sep">◆</span><span>Bulk Totes · 16L Jibs · Bottles</span><span class="sep">◆</span><span>Canola Oil</span><span class="sep">◆</span><span>Extra Virgin Olive Oil</span><span class="sep">◆</span><span>High Oleic Sunflower</span><span class="sep">◆</span><span>Non-GMO Canola</span><span class="sep">◆</span><span>Soybean Oil</span><span class="sep">◆</span><span>Corn Oil</span><span class="sep">◆</span><span>Organic Canola</span><span class="sep">◆</span><span>Private Label Co-Packing</span><span class="sep">◆</span><span>Bulk Totes · 16L Jibs · Bottles</span><span class="sep">◆</span>
   </div>
 </div>
 
-<!-- WHO WE ARE -->
+<!-- ═══ WHO WE ARE ═══════════════════════════════════════════ -->
 <section class="section section--warm">
   <div class="section-inner">
     <div class="two-col">
       <div class="left">
-        <div class="r">
-          <p class="eyebrow">Who We Are</p>
-          <h2 class="display">Always moving<br><em>forward</em></h2>
-          <p class="lead" style="margin-bottom:20px;">Founded in 1986, Enroute Imports Inc. has grown from a specialty oil importer into one of Canada's most trusted edible oil suppliers — operating from a <strong>modern HACCP/GMP Kosher-certified facility</strong> in Mississauga, Ontario.</p>
-          <p class="lead" style="margin-bottom:36px;">We supply the full range — Canola, EVOO, Sunflower, Soybean, Corn, Non-GMO, and Organic oils — to retailers, food service operators, manufacturers, and private label programs nationwide and around the world.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="aboutus.php" class="btn btn-olive">Our Story</a>
-            <a href="products.php" class="btn btn-outline">View Products</a>
-          </div>
+        <p class="eyebrow">Who We Are</p>
+        <h2 class="display reveal">Always moving<br><em>forward</em></h2>
+        <div class="gold-divider reveal d1"></div>
+        <p class="lead reveal d2" style="margin-bottom:20px;">Founded in 1986, Enroute Imports Inc. has grown from a specialty oil importer into one of Canada's most trusted edible oil suppliers — operating from a <strong>modern HACCP/GMP Kosher-certified facility</strong> in Mississauga, Ontario.</p>
+        <p class="lead reveal d3" style="margin-bottom:36px;">We supply the full range — Canola, EVOO, Sunflower, Soybean, Corn, Non-GMO, and Organic oils — to retailers, food service operators, manufacturers, and private label programs nationwide and around the world.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;" class="reveal d4">
+          <a href="aboutus.php" class="btn btn-olive">Our Story</a>
+          <a href="products.php" class="btn btn-outline">View Products</a>
         </div>
       </div>
       <div class="right">
-        <div class="r d2" style="position:relative;">
-          <img src="images/abt1.jpg" alt="Enroute Imports facility" style="width:100%;border-radius:var(--r);box-shadow:28px 28px 0 var(--parchment);" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <div style="width:100%;height:380px;background:var(--parchment);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--muted);">Enroute Facility</div>
+        <div class="reveal d2 img-reveal" style="border-radius:var(--r);overflow:hidden;box-shadow:28px 28px 0 var(--parchment);">
+          <img src="images/shelf-oils.jpg" alt="Oil bottles on retail shelf"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+               style="width:100%;height:400px;object-fit:cover;">
+          <div style="width:100%;height:400px;background:var(--parchment);display:none;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--muted);">Premium Edible Oils</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OIL GRID -->
+<!-- ═══ OIL GRID ══════════════════════════════════════════════ -->
 <section class="section section--cream">
   <div class="section-inner">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:24px;">
-      <div class="r">
+      <div>
         <p class="eyebrow">Our Oils</p>
-        <h2 class="display" style="margin-bottom:0;">Six oils. Every<br><em>application covered.</em></h2>
+        <h2 class="display reveal" style="margin-bottom:0;">Six oils. Every<br><em>application covered.</em></h2>
       </div>
-      <a href="products.php" class="btn btn-outline r d2">See All Products &amp; Specs</a>
+      <a href="products.php" class="btn btn-outline reveal d2">See All Products &amp; Specs</a>
     </div>
     <div class="oil-grid">
-      <div class="oil-card r d1">
+      <div class="oil-card">
         <span class="oil-tag hot">Best Seller</span>
         <h3>RBD Canola Oil</h3>
-        <p class="oil-desc">Light, neutral flavour with a 232°C smoke point. No additives. Ideal for sauces, cooking, frying, and salad dressings. Canadian origin.</p>
+        <p class="oil-desc">Light, neutral flavour. 232°C smoke point. No additives. Ideal for sauces, cooking, frying, and salad dressings. Canadian origin.</p>
         <div class="oil-data">
           <div class="oil-row"><span>Smoke Point</span><strong>232°C min</strong></div>
           <div class="oil-row"><span>Calories / tbsp</span><strong>124 · Fat 14g</strong></div>
         </div>
         <div class="oil-badges"><span class="oil-badge k">Kosher</span><span class="oil-badge">0g Trans Fat</span></div>
       </div>
-      <div class="oil-card r d2">
+      <div class="oil-card">
         <span class="oil-tag hot">Non-GMO</span>
         <h3>Non-GMO Canola</h3>
-        <p class="oil-desc">Pressed RBD process. Clear and brilliant. Bland/pleasing flavour. Compliant with 21 CFR 184.1555. Multi-country origins.</p>
+        <p class="oil-desc">Pressed RBD process. Clear and brilliant. Bland/pleasing flavour. 21 CFR 184.1555 compliant. Multi-country origins.</p>
         <div class="oil-data">
           <div class="oil-row"><span>Smoke Point</span><strong>204–232°C</strong></div>
           <div class="oil-row"><span>Calories / tbsp</span><strong>120 · Fat 14g</strong></div>
         </div>
         <div class="oil-badges"><span class="oil-badge k">Kosher</span><span class="oil-badge">Non-GMO</span></div>
       </div>
-      <div class="oil-card r d3">
+      <div class="oil-card">
         <span class="oil-tag">Premium</span>
         <h3>Extra Virgin Olive Oil</h3>
-        <p class="oil-desc">Italian origin EVOO, yellow-to-green colour, IOC compliant. Perfect for dressings, sautéing, and finishing. 24-month shelf life.</p>
+        <p class="oil-desc">Italian origin EVOO, IOC compliant. Yellow-to-green colour. Perfect for dressings, sautéing, and finishing. 24-month shelf life.</p>
         <div class="oil-data">
           <div class="oil-row"><span>F.F.A.</span><strong>≤ 0.8% (m/m)</strong></div>
           <div class="oil-row"><span>Calories / tbsp</span><strong>119 · Fat 14g</strong></div>
         </div>
         <div class="oil-badges"><span class="oil-badge k">Kosher</span><span class="oil-badge">Italy Origin</span></div>
       </div>
-      <div class="oil-card r d4">
+      <div class="oil-card">
         <span class="oil-tag">High Oleic</span>
         <h3>Sunflower Oil (H.O.)</h3>
-        <p class="oil-desc">Oxidation stability comparable to olive oil. 240°C smoke point. Ideal for baking, frying, margarines, and specialty applications.</p>
+        <p class="oil-desc">Oxidation stability comparable to olive oil. 240°C smoke point. Ideal for baking, frying, and specialty applications.</p>
         <div class="oil-data">
           <div class="oil-row"><span>Smoke Point</span><strong>240°C / 464°F</strong></div>
           <div class="oil-row"><span>Oleic Acid</span><strong>75–92%</strong></div>
         </div>
         <div class="oil-badges"><span class="oil-badge k">Kosher</span><span class="oil-badge">High Oleic</span></div>
       </div>
-      <div class="oil-card r d5">
+      <div class="oil-card">
         <span class="oil-tag">Versatile</span>
         <h3>Soybean Oil</h3>
         <p class="oil-desc">RBD Soybean Oil. All-purpose for cooking, baking, frying, and salad dressings. Cold test 15 hrs min. Canadian origin.</p>
@@ -176,10 +272,10 @@
         </div>
         <div class="oil-badges"><span class="oil-badge k">Kosher</span><span class="oil-badge">0g Trans Fat</span></div>
       </div>
-      <div class="oil-card r d6">
+      <div class="oil-card">
         <span class="oil-tag">Classic</span>
         <h3>Corn Oil</h3>
-        <p class="oil-desc">Natural/bland flavour, 230°C smoke point, OSI 10+ hrs at 110°C. Ideal for sauces, cooking, frying, and salad oil. Origin: Türkiye.</p>
+        <p class="oil-desc">Natural/bland flavour, 230°C smoke point. OSI 10+ hrs at 110°C. Ideal for sauces, cooking, frying, and salad oil. Origin: Türkiye.</p>
         <div class="oil-data">
           <div class="oil-row"><span>Smoke Point</span><strong>230°C / 446°F</strong></div>
           <div class="oil-row"><span>Calories / tbsp</span><strong>120 · Fat 14g</strong></div>
@@ -190,28 +286,47 @@
   </div>
 </section>
 
-<!-- STATS / BY THE NUMBERS -->
+<!-- ═══ SHELF PHOTO SECTION ══════════════════════════════════ -->
+<div class="shelf-section">
+  <img class="shelf-img"
+       src="images/shelf-pranzo.jpg"
+       alt="PRANZO bottles on retail shelf"
+       onerror="this.style.display='none'">
+  <div class="shelf-overlay">
+    <div class="shelf-content">
+      <div class="reveal" style="max-width:520px;">
+        <p class="eyebrow light">On Shelves Across Canada</p>
+        <h2 class="display white gold" style="margin-bottom:20px;">Trusted on<br><em>every shelf</em></h2>
+        <p style="color:rgba(255,255,255,.45);font-size:.95rem;line-height:1.85;margin-bottom:28px;">PRANZO and VOILÀ bottles are found in grocery stores, club stores, and specialty retailers nationwide. Recognized by consumers, trusted by buyers.</p>
+        <a href="brands.php" class="btn btn-primary">Our Brands <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:13px;height:13px;"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STATS ════════════════════════════════════════════════ -->
 <section class="section section--ink">
   <div class="section-inner">
-    <div class="r"><p class="eyebrow light">By the Numbers</p><h2 class="display white gold">Trusted across<br><em>every channel</em></h2></div>
-    <div class="stats-row r d1">
+    <p class="eyebrow light">By the Numbers</p>
+    <h2 class="display white gold reveal">Trusted across<br><em>every channel</em></h2>
+    <div class="stats-row">
       <div><div class="stat-n">38+</div><div class="stat-l">Years in Business</div></div>
       <div><div class="stat-n">7+</div><div class="stat-l">Oil Varieties</div></div>
       <div><div class="stat-n">3</div><div class="stat-l">Market Sectors</div></div>
-      <div><div class="stat-n">🌍</div><div class="stat-l">Global Network</div></div>
+      <div><div class="stat-n" style="font-size:2.8rem;">🌍</div><div class="stat-l">Global Network</div></div>
     </div>
     <div class="feat-grid" style="margin-top:2px;">
-      <div class="feat r d2">
+      <div class="feat">
         <div class="feat-num">01</div>
         <h4>Rapid Turnaround</h4>
-        <p>Outstanding customer service paired with rapid turnaround. Easy to reach, quick to respond — every order is smooth and stress-free.</p>
+        <p>Outstanding customer service with rapid turnaround. Easy to reach, quick to respond — every order is smooth and stress-free.</p>
       </div>
-      <div class="feat r d3">
+      <div class="feat">
         <div class="feat-num">02</div>
         <h4>Transparent Pricing</h4>
         <p>Clear pricing including tariffs, logistics, and quantities. No surprises — straightforward partnership from order to delivery.</p>
       </div>
-      <div class="feat r d4">
+      <div class="feat">
         <div class="feat-num">03</div>
         <h4>Private Label Ready</h4>
         <p>Full co-packing programs for national distributors and chain stores. From spec development to shelf-ready packaging.</p>
@@ -220,46 +335,87 @@
   </div>
 </section>
 
-<!-- BRANDS -->
+<!-- ═══ PRODUCT BOTTLES SHOWCASE ════════════════════════════ -->
+<div class="products-strip">
+  <div class="products-strip-inner">
+    <div style="text-align:center;">
+      <p class="eyebrow light" style="justify-content:center;">Our Brands</p>
+      <h2 class="display white gold reveal" style="margin-bottom:0;">Meet the<br><em>full lineup</em></h2>
+    </div>
+    <div class="product-bottles">
+      <div class="bottle-item reveal d1">
+        <img src="images/voila-canola-1L.jpg" alt="VOILÀ Canola Oil 1L"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="width:90px;height:260px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;padding:10px;">VOILÀ Canola 1L</div>
+        <span class="bottle-label">VOILÀ Canola · 1L</span>
+      </div>
+      <div class="bottle-item featured reveal d2">
+        <img src="images/pranzo-evoo-1L.jpg" alt="PRANZO Extra Virgin Olive Oil 1L"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="width:110px;height:320px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;padding:10px;">PRANZO EVOO 1L</div>
+        <span class="bottle-label">PRANZO EVOO · 1L</span>
+      </div>
+      <div class="bottle-item featured reveal d3">
+        <img src="images/pranzo-1L.jpg" alt="PRANZO Canola Blend 1L"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="width:110px;height:320px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;padding:10px;">PRANZO Blend 1L</div>
+        <span class="bottle-label">PRANZO Blend · 1L</span>
+      </div>
+      <div class="bottle-item reveal d4">
+        <img src="images/pranzo-2L.jpg" alt="PRANZO 2L Jug"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="width:110px;height:280px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;padding:10px;">PRANZO Blend 2L</div>
+        <span class="bottle-label">PRANZO Blend · 2L</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;" class="reveal d5">
+      <a href="brands.php" class="btn btn-primary" style="margin-right:12px;">Explore Brands <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:13px;height:13px;"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a href="contactus.php" class="btn btn-ghost">Request Spec Sheets</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ WHO WE SERVE ══════════════════════════════════════════ -->
 <section class="section section--parch">
   <div class="section-inner">
     <div class="two-col flip">
       <div class="left">
-        <div class="r">
-          <p class="eyebrow">Our Brands</p>
-          <h2 class="display">Meet <em>VOILÀ</em><br>&amp; Pranzo</h2>
-          <p class="lead" style="margin-bottom:20px;"><strong>VOILÀ</strong> is our flagship retail brand — Canola, Sunflower, and specialty oils in 3L bottles. Cholesterol free, no trans fats, Kosher and COR certified.</p>
-          <p class="lead" style="margin-bottom:36px;"><strong>PRANZO</strong> is our premium Canola &amp; Extra Virgin Olive Oil blend — rich in Omega-3, 0g trans fat, Made in Canada. Available in 1L, 1.89L, 2L, and 3L formats.</p>
-          <a href="brands.php" class="btn btn-primary">Explore Our Brands <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:13px;height:13px;"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <p class="eyebrow">Who We Serve</p>
+        <h2 class="display reveal">B2B &amp; <em>Retail</em><br>— both done well</h2>
+        <div class="gold-divider reveal d1"></div>
+        <p class="lead reveal d2" style="margin-bottom:20px;"><strong>Businesses of all sizes</strong> — from retailers to large-scale food manufacturers and distributors. Flexible packaging and reliable supply chains.</p>
+        <p class="lead reveal d3" style="margin-bottom:28px;">Also available through <strong>supermarket retail channels</strong> under the VOILÀ and PRANZO brands. B2B or retail — we deliver.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="reveal d4">
+          <div style="background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);padding:22px;">
+            <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Bulk / B2B</div>
+            <div style="font-size:.85rem;color:var(--ink);line-height:1.65;">Manufacturers · Distributors · Food Service</div>
+          </div>
+          <div style="background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);padding:22px;">
+            <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Retail</div>
+            <div style="font-size:.85rem;color:var(--ink);line-height:1.65;">VOILÀ · PRANZO · Private Label</div>
+          </div>
         </div>
       </div>
       <div class="right">
-        <div class="r d1" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div style="background:var(--ink);border-radius:var(--r);padding:36px 24px 28px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(196,150,58,.14) 0%,transparent 60%);"></div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:#fff;font-style:italic;line-height:1;margin-bottom:10px;position:relative;">VOILÀ</div>
-            <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);position:relative;">Flagship Retail Brand</div>
+        <div class="reveal d2" style="background:var(--ink);border-radius:var(--r);padding:48px 40px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:300;color:#fff;margin-bottom:28px;line-height:1.2;font-style:italic;">"A trusted edible oil partner offering consistent quality, stable supply, and reliable performance."</div>
+          <div style="display:flex;flex-direction:column;gap:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:24px;">
+            <div style="display:flex;justify-content:space-between;font-size:.75rem;"><span style="color:rgba(255,255,255,.32);">Packaging</span><strong style="color:rgba(255,255,255,.7);font-weight:400;">Bottles · 16L Jibs · Totes</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.75rem;"><span style="color:rgba(255,255,255,.32);">Certifications</span><strong style="color:rgba(255,255,255,.7);font-weight:400;">Kosher · HACCP · Non-GMO · COR</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.75rem;"><span style="color:rgba(255,255,255,.32);">Payment Terms</span><strong style="color:rgba(255,255,255,.7);font-weight:400;">1% 10 days, net 30</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:.75rem;"><span style="color:rgba(255,255,255,.32);">Markets</span><strong style="color:rgba(255,255,255,.7);font-weight:400;">Canada · USA · International</strong></div>
           </div>
-          <div style="background:var(--olive);border-radius:var(--r);padding:36px 24px 28px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 20%,rgba(196,150,58,.18) 0%,transparent 60%);"></div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--gold-light);font-style:italic;line-height:1;margin-bottom:10px;position:relative;">Pranzo</div>
-            <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);position:relative;">Premium Blend</div>
-          </div>
-          <div style="grid-column:1/-1;background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);padding:20px 28px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:16px;">
-            <div style="text-align:center;"><div style="font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Formats</div><div style="font-size:.88rem;color:var(--ink);">1L · 1.89L · 2L · 3L</div></div>
-            <div style="text-align:center;"><div style="font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Packaging</div><div style="font-size:.88rem;color:var(--ink);">Bottles · Jibs · Totes</div></div>
-            <div style="text-align:center;"><div style="font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Terms</div><div style="font-size:.88rem;color:var(--ink);">1% 10 days, net 30</div></div>
-          </div>
+          <a href="contactus.php" class="btn btn-primary" style="margin-top:28px;">Start a Conversation</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRIVATE LABEL TEASER -->
-<section class="section section--ink" style="padding:80px 0;">
+<!-- ═══ PRIVATE LABEL CTA ════════════════════════════════════ -->
+<section class="section section--ink" style="padding:90px 0;">
   <div class="section-inner" style="text-align:center;max-width:680px;margin:0 auto;">
-    <div class="r">
+    <div class="reveal">
       <p class="eyebrow light" style="justify-content:center;">Private Label Programs</p>
       <h2 class="display white gold" style="margin-bottom:20px;">Your brand,<br><em>our expertise</em></h2>
       <p style="color:rgba(255,255,255,.35);font-size:.9rem;line-height:1.85;margin-bottom:32px;">Co-packing of private label oils for national distributors and chain stores. From spec development and regulatory compliance to shelf-ready packaging.</p>
@@ -279,7 +435,8 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo-name">Enroute Imports Inc.</div>
+        <img src="logo.svg" alt="Enroute Imports Inc." style="height:36px;width:auto;margin-bottom:20px;opacity:.7;" onerror="this.style.display='none'">
+        <div class="footer-logo-name" style="margin-top:0;">Enroute Imports Inc.</div>
         <p>Premium food importers and distributors since 1986. HACCP/GMP Kosher-certified facility in Mississauga, Ontario — serving Canada and the world.</p>
         <div class="footer-slogan">"Healthy Cooking Starts Here."</div>
       </div>
@@ -311,15 +468,15 @@
   </div>
 </footer>
 
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+<script src="animations.js"></script>
 <script>
-  const nav=document.getElementById('nav'),toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile'),fcta=document.getElementById('floatingCta');
-  window.addEventListener('scroll',()=>{
-    nav.classList.toggle('scrolled',window.scrollY>40);
-    if(fcta)fcta.classList.toggle('show',window.scrollY>400);
-  },{passive:true});
+  // Nav mobile toggle
+  const toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile');
   toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');});
-  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.07});
-  document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
