@@ -197,7 +197,7 @@ strong{font-weight:600;color:var(--ink);}
   max-width:1380px;margin:0 auto;
   padding:140px 40px 100px;
   width:100%;
-  display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center;
+  display:grid;grid-template-columns:1fr 560px;gap:64px;align-items:center;
 }
 .hero-kicker{
   font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
@@ -216,55 +216,60 @@ strong{font-weight:600;color:var(--ink);}
 .trust-item strong{color:#fff;font-weight:600;}
 .trust-item::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
 
-/* Hero Visual / Product Bottle (transparent PNG, no shadow) */
+/* Hero Visual / Product Lineup (transparent PNGs) */
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
 .hero-bottle-wrap{
   position:relative;
-  width:340px;height:480px;
+  width:100%;height:560px;
   display:flex;align-items:center;justify-content:center;
 }
 .hero-bottle-glow{
-  position:absolute;inset:-30px;
-  background:radial-gradient(ellipse 55% 60% at 50% 50%,rgba(196,150,58,.28) 0%,transparent 70%);
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 62% 56% at 50% 52%,rgba(196,150,58,.32) 0%,transparent 70%);
   animation:bottleGlow 5s ease-in-out infinite alternate;
 }
 @keyframes bottleGlow{
   0%{transform:scale(1);opacity:.7;}
   100%{transform:scale(1.12);opacity:1;}
 }
-.hero-bottle{
+.hero-lineup{
   position:relative;z-index:2;
   width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  animation:bottleFloat 6s ease-in-out infinite;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.hero-lineup .bottle{
+  object-fit:contain;width:auto;
+  filter:drop-shadow(0 28px 42px rgba(0,0,0,.5));
 }
 @keyframes bottleFloat{
   0%,100%{transform:translateY(0px);}
   50%{transform:translateY(-18px);}
 }
-.hero-bottle img{
-  max-height:460px;max-width:300px;
-  object-fit:contain;width:auto;height:100%;
+.bottle-main{
+  height:500px;z-index:3;position:relative;
+  animation:bottleFloat 6s ease-in-out infinite;
 }
-.hero-bottle-ph{
-  width:260px;height:380px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:600;
-  color:rgba(255,255,255,.35);
-  border:1px solid rgba(255,255,255,.12);border-radius:var(--r);
-  background:rgba(255,255,255,.04);
-  text-align:center;padding:20px;
+.bottle-side{
+  height:360px;z-index:2;position:relative;opacity:.97;
+}
+.bottle-left{
+  margin-right:-52px;margin-bottom:14px;
+  animation:bottleFloat 6.8s ease-in-out .5s infinite;
+}
+.bottle-right{
+  margin-left:-52px;margin-bottom:4px;
+  animation:bottleFloat 6.4s ease-in-out .9s infinite;
 }
 .hero-float-tag{
-  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
   background:rgba(20,16,14,.85);backdrop-filter:blur(10px);
   border:1px solid rgba(196,150,58,.4);border-radius:var(--r-pill);
   padding:9px 22px;font-size:.6rem;letter-spacing:.16em;font-weight:600;
   text-transform:uppercase;color:var(--gold-light);white-space:nowrap;
-  opacity:0;
+  opacity:0;z-index:4;
 }
 .hero-stat-card{
-  position:absolute;bottom:0;left:-20px;
+  position:absolute;bottom:8px;left:-10px;z-index:5;
   background:var(--gold);border-radius:var(--r);
   padding:20px 26px;
   animation:bottleFloat 6s ease-in-out infinite reverse;
