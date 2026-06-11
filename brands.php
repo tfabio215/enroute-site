@@ -141,7 +141,7 @@
         </div>
       </div>
       <div class="right">
-        <div class="r d2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        <div class="r d2 grid-3" style="gap:12px;">
           <div style="background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);padding:24px 18px;text-align:center;">
             <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--ink);margin-bottom:8px;font-style:italic;">Canola</div>
             <div style="font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">232°C Smoke Point</div>
