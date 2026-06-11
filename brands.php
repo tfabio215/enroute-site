@@ -43,7 +43,7 @@
   <div class="brand-split">
     <div class="brand-half voila">
       <div class="brand-glow v"></div>
-      <img class="brand-product-img" src="images/voila-canola-1L.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="brand-product-img" src="images/img72.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
       <div class="r up" style="position:relative;z-index:1;">
         <p class="eyebrow light">Flagship Brand</p>
         <h2><em>VOILÀ</em></h2>
@@ -64,7 +64,7 @@
     </div>
     <div class="brand-half pranzo">
       <div class="brand-glow p"></div>
-      <img class="brand-product-img" src="images/pranzo-1L.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      <img class="brand-product-img" src="images/img47.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
       <div class="r up" style="position:relative;z-index:1;">
         <p class="eyebrow light">Premium Brand</p>
         <h2><em>Pranzo</em></h2>
