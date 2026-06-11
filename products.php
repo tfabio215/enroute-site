@@ -220,7 +220,7 @@
         </div>
         <h3>Organic Canola Oil</h3>
         <p>Our cleanest, most traceable canola — certified Organic and Non-GMO. For brands and manufacturers who need the complete clean-label story. Same great neutral flavour and high smoke point performance as conventional canola, with full organic certification documentation available. Available in bulk and packaged formats.</p>
-        <div class="spec-list" style="grid-template-columns:repeat(3,1fr);display:grid;gap:10px 40px;">
+        <div class="spec-list grid-3" style="gap:10px 40px;">
           <div class="spec-row"><span class="sk">Smoke Point</span><span class="sv">204–232°C</span></div>
           <div class="spec-row"><span class="sk">Origin</span><span class="sv">Canada</span></div>
           <div class="spec-row"><span class="sk">Shelf Life</span><span class="sv">24 months sealed</span></div>

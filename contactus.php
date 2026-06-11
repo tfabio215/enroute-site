@@ -105,7 +105,7 @@
       <p class="eyebrow light" style="justify-content:center;">How We Can Help</p>
       <h2 class="display white gold">Start the<br><em>conversation</em></h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;" class="r d1">
+    <div style="gap:2px;" class="r d1 grid-3">
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:32px 28px;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold-light);margin-bottom:16px;font-style:italic;">Bulk Orders</div>
         <p style="font-size:.82rem;color:rgba(255,255,255,.32);line-height:1.8;">Discuss volumes, delivery schedules, and pricing for commercial quantities — 16L jibs, totes, or drums.</p>

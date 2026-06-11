@@ -207,21 +207,6 @@
       });
     });
 
-    // ── Number counters (fallback for non data-count) ─────────
-    document.querySelectorAll('.stat-n:not([data-count])').forEach(el => {
-      const txt = el.textContent.trim();
-      if (/^\d+\+?$/.test(txt)) {
-        const num = parseInt(txt);
-        const suf = txt.includes('+') ? '+' : '';
-        el.textContent = '0';
-        gsap.to({ val: 0 }, {
-          val: num, duration: 1.8, ease: 'power2.out',
-          onUpdate: function() { el.textContent = Math.round(this.targets()[0].val) + suf; },
-          scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
-        });
-      }
-    });
-
     // ── Hero h1 animation ─────────────────────────────────────
     const heroH1 = document.querySelector('.hero h1');
     if (heroH1) {
