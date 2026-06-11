@@ -299,18 +299,10 @@
       }
     });
 
-    // ── Hero h1 line wrapping ─────────────────────────────────
-    // wrap each text node in a .line span for animation
+    // ── Hero h1 animation ─────────────────────────────────────
     const heroH1 = document.querySelector('.hero h1');
-    if (heroH1 && !heroH1.querySelector('.line')) {
-      const html = heroH1.innerHTML;
-      heroH1.innerHTML = html.replace(/([^<\n]+(?:<em>[^<]*<\/em>[^<\n]*)?)/g, match => {
-        if (match.trim()) return `<span class="line" style="display:block;overflow:hidden;padding-bottom:.05em;"><span class="line-inner" style="display:block;">${match}</span></span>`;
-        return match;
-      });
-      gsap.from(heroH1.querySelectorAll('.line-inner'), {
-        y: '100%', opacity: 0, duration: 1.1, stagger: .15, ease: 'power3.out', delay: .4
-      });
+    if (heroH1) {
+      gsap.from(heroH1, { y: 60, opacity: 0, duration: 1.2, ease: 'power3.out', delay: .4 });
     }
 
     console.log('✦ Enroute Imports animations loaded');

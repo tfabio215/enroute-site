@@ -36,7 +36,7 @@
 
     /* ── Products showcase strip ── */
     .products-strip{
-      background:var(--ink-soft);
+      background:var(--parchment);
       padding:80px 0;
     }
     .products-strip-inner{
@@ -61,10 +61,10 @@
     }
     .bottle-label{
       font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
-      color:rgba(255,255,255,.3);text-align:center;
+      color:var(--muted);text-align:center;
       transition:color .3s;
     }
-    .bottle-item:hover .bottle-label{color:var(--gold-light);}
+    .bottle-item:hover .bottle-label{color:var(--gold);}
     .bottle-item.featured img{height:400px;}
 
     @media(max-width:900px){
@@ -345,32 +345,32 @@
 <div class="products-strip">
   <div class="products-strip-inner">
     <div style="text-align:center;">
-      <p class="eyebrow light" style="justify-content:center;">Our Brands</p>
-      <h2 class="display white gold reveal" style="margin-bottom:0;">Meet the<br><em>full lineup</em></h2>
+      <p class="eyebrow" style="justify-content:center;">Our Brands</p>
+      <h2 class="display reveal" style="margin-bottom:0;">Meet the<br><em>full lineup</em></h2>
     </div>
     <div class="product-bottles">
       <div class="bottle-item reveal d1">
         <img src="images/img72.jpg" alt="VOILÀ Canola Oil 1L"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="width:90px;height:260px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;padding:10px;">VOILÀ Canola 1L</div>
+        <div style="width:90px;height:260px;background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:var(--muted);text-align:center;padding:10px;">VOILÀ Canola 1L</div>
         <span class="bottle-label">VOILÀ Canola · 1L</span>
       </div>
       <div class="bottle-item featured reveal d2">
         <img src="images/img70.jpg" alt="PRANZO Extra Virgin Olive Oil 1L"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="width:110px;height:320px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;padding:10px;">PRANZO EVOO 1L</div>
+        <div style="width:110px;height:320px;background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:var(--muted);text-align:center;padding:10px;">PRANZO EVOO 1L</div>
         <span class="bottle-label">PRANZO EVOO · 1L</span>
       </div>
       <div class="bottle-item featured reveal d3">
         <img src="images/img47.jpg" alt="PRANZO Canola Blend 1L"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="width:110px;height:320px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;padding:10px;">PRANZO Blend 1L</div>
+        <div style="width:110px;height:320px;background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:var(--muted);text-align:center;padding:10px;">PRANZO Blend 1L</div>
         <span class="bottle-label">PRANZO Blend · 1L</span>
       </div>
       <div class="bottle-item reveal d4">
         <img src="images/img45.jpg" alt="PRANZO 2L Jug"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div style="width:110px;height:280px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;padding:10px;">PRANZO Blend 2L</div>
+        <div style="width:110px;height:280px;background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);display:none;align-items:center;justify-content:center;font-size:.7rem;color:var(--muted);text-align:center;padding:10px;">PRANZO Blend 2L</div>
         <span class="bottle-label">PRANZO Blend · 2L</span>
       </div>
     </div>
@@ -480,9 +480,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
 <script src="animations.js"></script>
 <script>
-  // Nav mobile toggle
   const toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile');
   toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');});
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.07});
+  document.querySelectorAll('.r').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>

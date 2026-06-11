@@ -254,6 +254,9 @@ strong{font-weight:500;color:var(--ink);}
 .hero-bottle img{
   max-height:420px;max-width:280px;
   object-fit:contain;width:auto;height:100%;
+  background:#fff;border-radius:4px;
+  padding:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
 .hero-bottle-ph{
   width:260px;height:380px;
