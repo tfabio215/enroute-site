@@ -105,122 +105,45 @@
 
     // ── Scroll Animations ────────────────────────────────────
     function initScrollAnimations() {
-
-      // Generic reveal
-      gsap.utils.toArray('.reveal').forEach(el => {
-        const dir = el.classList.contains('left-in') ? { x: -40 }
-                  : el.classList.contains('right-in') ? { x: 40 }
-                  : el.classList.contains('scale-in') ? { scale: .93 }
-                  : { y: 40 };
-
-        const delay = parseFloat(getComputedStyle(el).transitionDelay) || 0;
-
-        gsap.from(el, {
-          ...dir, opacity: 0, duration: .9,
-          ease: 'power3.out', delay,
-          scrollTrigger: {
-            trigger: el, start: 'top 88%',
-            toggleActions: 'play none none none'
+      // ── CSS-based reveals via IntersectionObserver ────────
+      const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            revealObs.unobserve(e.target);
           }
         });
-      });
+      }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
 
-      // Eyebrows
-      gsap.utils.toArray('.eyebrow').forEach(el => {
-        const tl = gsap.timeline({
-          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
-        });
-        tl.to(el, { opacity: 1, x: 0, duration: .7, ease: 'power2.out' });
-      });
+      document.querySelectorAll('.r, .reveal, .eyebrow').forEach(el => revealObs.observe(el));
 
-      // Image reveals
-      gsap.utils.toArray('.img-reveal').forEach(wrap => {
-        const img = wrap.querySelector('img');
-        if (!img) return;
-        const tl = gsap.timeline({
-          scrollTrigger: { trigger: wrap, start: 'top 85%', toggleActions: 'play none none none' }
-        });
-        tl.to(wrap, { '--reveal-x': '100%', duration: .9, ease: 'power3.inOut' })
-          .from(img, { scale: 1.1, duration: 1.1, ease: 'power2.out' }, 0);
+      // Oil cards stagger (CSS classes already handle delay)
+      document.querySelectorAll('.oil-card, .product-detail-card, .feat, .pack-card, .pranzo-card, .sku-card').forEach((el, i) => {
+        el.style.transitionDelay = (i % 3) * 0.1 + 's';
+        revealObs.observe(el);
       });
 
       // Stat counters
-      gsap.utils.toArray('.stat-n[data-count]').forEach(el => {
-        const end = parseFloat(el.dataset.count);
-        const suffix = el.dataset.suffix || '';
-        gsap.from({ val: 0 }, {
-          val: end, duration: 1.8, ease: 'power2.out',
-          onUpdate: function() { el.textContent = Math.round(this.targets()[0].val) + suffix; },
-          scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
-        });
+      gsap.utils.toArray('.stat-n:not([data-count])').forEach(el => {
+        const txt = el.textContent.trim();
+        if (/^\d/.test(txt)) {
+          const num = parseInt(txt);
+          const suf = txt.replace(/\d/g,'');
+          el.textContent = '0' + suf;
+          ScrollTrigger.create({
+            trigger: el, start: 'top 88%', once: true,
+            onEnter: () => gsap.to({ val: 0 }, {
+              val: num, duration: 1.8, ease: 'power2.out',
+              onUpdate: function() { el.textContent = Math.round(this.targets()[0].val) + suf; }
+            })
+          });
+        }
       });
 
-      // Oil cards stagger
-      const oilGrids = document.querySelectorAll('.oil-grid');
-      oilGrids.forEach(grid => {
-        const cards = grid.querySelectorAll('.oil-card');
-        gsap.from(cards, {
-          y: 50, opacity: 0, duration: .8, stagger: .1, ease: 'power3.out',
-          scrollTrigger: { trigger: grid, start: 'top 80%', toggleActions: 'play none none none' }
-        });
-      });
-
-      // Feature grid stagger
-      document.querySelectorAll('.feat-grid').forEach(grid => {
-        gsap.from(grid.querySelectorAll('.feat'), {
-          y: 40, opacity: 0, duration: .7, stagger: .1, ease: 'power3.out',
-          scrollTrigger: { trigger: grid, start: 'top 82%', toggleActions: 'play none none none' }
-        });
-      });
-
-      // Product detail cards
-      document.querySelectorAll('.product-detail-grid').forEach(grid => {
-        gsap.from(grid.querySelectorAll('.product-detail-card'), {
-          y: 50, opacity: 0, duration: .8, stagger: .12, ease: 'power3.out',
-          scrollTrigger: { trigger: grid, start: 'top 82%', toggleActions: 'play none none none' }
-        });
-      });
-
-      // Stats row
-      document.querySelectorAll('.stats-row > div').forEach((el, i) => {
-        gsap.from(el, {
-          y: 30, opacity: 0, duration: .7, delay: i * .1, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-        });
-      });
-
-      // Section headings
-      document.querySelectorAll('.display').forEach(el => {
-        gsap.from(el, {
-          y: 40, opacity: 0, duration: 1.0, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-        });
-      });
-
-      // Parallax on dark section backgrounds
-      document.querySelectorAll('.section--ink .hero-canvas, .page-hero-bg').forEach(el => {
-        gsap.to(el, {
-          yPercent: 20,
-          ease: 'none',
-          scrollTrigger: { trigger: el.parentElement, scrub: true }
-        });
-      });
-
-      // Brand half parallax images
-      document.querySelectorAll('.brand-product-img').forEach(img => {
-        gsap.to(img, {
-          yPercent: -15,
-          ease: 'none',
-          scrollTrigger: { trigger: img.closest('.brand-half'), scrub: true }
-        });
-      });
-
-      // Section gold line reveals
-      document.querySelectorAll('.gold-divider').forEach(el => {
-        gsap.from(el, {
-          scaleX: 0, transformOrigin: 'left',
-          duration: .8, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+      // Gold dividers
+      gsap.utils.toArray('.gold-divider').forEach(el => {
+        gsap.from(el, { scaleX: 0, transformOrigin: 'left', duration: .8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 92%', once: true }
         });
       });
 
@@ -234,7 +157,7 @@
         });
       }
 
-      // Nav hide on scroll down
+      // Nav hide on scroll
       const nav = document.getElementById('nav');
       if (nav) {
         let lastY = 0;

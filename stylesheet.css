@@ -651,6 +651,19 @@ strong{font-weight:500;color:var(--ink);}
 .d4{transition-delay:.4s;}.d5{transition-delay:.5s;}.d6{transition-delay:.6s;}
 .d7{transition-delay:.7s;}.d8{transition-delay:.8s;}
 
+/* ── .r scroll reveal (IntersectionObserver-driven) ── */
+.r{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s cubic-bezier(.22,.68,0,1);}
+.r.visible{opacity:1 !important;transform:none !important;}
+.r.up{transform:translateY(16px);}
+.r.left-in{transform:translateX(-24px);}
+.r.right-in{transform:translateX(24px);}
+.r.d1{transition-delay:.1s;}.r.d2{transition-delay:.2s;}.r.d3{transition-delay:.3s;}
+.r.d4{transition-delay:.4s;}.r.d5{transition-delay:.5s;}.r.d6{transition-delay:.6s;}
+.r.d7{transition-delay:.7s;}.r.d8{transition-delay:.8s;}
+
+.oil-card,.product-detail-card,.feat,.pack-card,.pranzo-card,.sku-card{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.oil-card.visible,.product-detail-card.visible,.feat.visible,.pack-card.visible,.pranzo-card.visible,.sku-card.visible{opacity:1;transform:none;}
+
 /* ── Image reveal ────────────────────────────────────────── */
 .img-reveal{position:relative;overflow:hidden;}
 .img-reveal img{transform:scale(1.08);transition:transform 1.2s cubic-bezier(.22,.68,0,1);}

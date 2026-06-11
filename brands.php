@@ -43,7 +43,6 @@
   <div class="brand-split">
     <div class="brand-half voila">
       <div class="brand-glow v"></div>
-      <img class="brand-product-img" src="images/img72.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
       <div class="r up" style="position:relative;z-index:1;">
         <p class="eyebrow light">Flagship Brand</p>
         <h2><em>VOILÀ</em></h2>

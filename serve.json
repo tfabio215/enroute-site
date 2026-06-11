@@ -1,4 +1,8 @@
 {
+  "rewrites": [
+    { "source": "/", "destination": "/index.htm" }
+  ],
+  "directoryListing": false,
   "headers": [
     {
       "source": "**/*.php",

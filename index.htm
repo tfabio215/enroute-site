@@ -11,6 +11,7 @@
     .hero-canvas{
       background-image:url('images/img162.jpg');
       background-size:cover;background-position:center;
+      opacity:.15;
     }
 
     /* ── Shelf showcase section ── */
@@ -99,7 +100,7 @@
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="index.htm" class="nav-logo">
-      <img src="images/enroute logo-02.png" alt="Enroute Imports Inc." style="height:38px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <img src="images/enroute%20logo-02.png" alt="Enroute Imports Inc." style="height:38px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <span style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;">Enroute Imports Inc.<small style="display:block;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);font-family:'DM Sans',sans-serif;font-weight:300;margin-top:2px;">Premium Food Importers · Est. 1986</small></span>
     </a>
     <ul class="nav-links">
@@ -311,7 +312,7 @@
 </div>
 
 <!-- ═══ STATS ════════════════════════════════════════════════ -->
-<section class="section section--ink" style="background-image:url('images/img175.jpg');background-size:cover;background-position:center;background-blend-mode:luminosity;">
+<section class="section section--ink">
   <div class="section-inner">
     <p class="eyebrow light">By the Numbers</p>
     <h2 class="display white gold reveal">Trusted across<br><em>every channel</em></h2>
@@ -441,7 +442,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="images/enroute logo-02.png" alt="Enroute Imports Inc." style="height:36px;width:auto;margin-bottom:20px;opacity:.7;" onerror="this.style.display='none'">
+        <img src="images/enroute%20logo-02.png" alt="Enroute Imports Inc." style="height:36px;width:auto;margin-bottom:20px;opacity:.7;" onerror="this.style.display='none'">
         <div class="footer-logo-name" style="margin-top:0;">Enroute Imports Inc.</div>
         <p>Premium food importers and distributors since 1986. HACCP/GMP Kosher-certified facility in Mississauga, Ontario — serving Canada and the world.</p>
         <div class="footer-slogan">"Healthy Cooking Starts Here."</div>
@@ -482,8 +483,8 @@
 <script>
   const toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile');
   toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');});
-  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.07});
-  document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.r,.reveal,.eyebrow,.oil-card,.product-detail-card,.feat,.pack-card,.pranzo-card,.sku-card').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
