@@ -14,7 +14,7 @@
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="index.htm" class="nav-logo">Enroute Imports Inc.<small>Premium Food Importers · Est. 1986</small></a>
+    <a href="index.htm" class="nav-logo"><img src="images/enroute%20logo-02.png" alt="Enroute Imports Inc."></a>
     <ul class="nav-links">
       <li><a href="index.htm">Home</a></li>
       <li><a href="aboutus.php" class="active">About</a></li>
@@ -153,7 +153,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo-name">Enroute Imports Inc.</div>
+        <img src="images/enroute%20logo-02.png" alt="Enroute Imports Inc." class="footer-logo-img" onerror="this.style.display='none'">
         <p>Premium food importers and distributors since 1986. HACCP/GMP Kosher-certified facility in Mississauga, Ontario — serving Canada and the world.</p>
         <div class="footer-slogan">"Healthy Cooking Starts Here."</div>
       </div>

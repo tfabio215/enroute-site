@@ -14,7 +14,7 @@
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="index.htm" class="nav-logo">Enroute Imports Inc.<small>Premium Food Importers · Est. 1986</small></a>
+    <a href="index.htm" class="nav-logo"><img src="images/enroute%20logo-02.png" alt="Enroute Imports Inc."></a>
     <ul class="nav-links">
       <li><a href="index.htm">Home</a></li>
       <li><a href="aboutus.php">About</a></li>
@@ -124,7 +124,7 @@
 
 <footer class="footer"><div class="footer-inner">
   <div class="footer-top">
-    <div class="footer-brand"><div class="footer-logo-name">Enroute Imports Inc.</div><p>Premium food importers and distributors since 1986. HACCP/GMP Kosher-certified facility in Mississauga, Ontario.</p><div class="footer-slogan">"Healthy Cooking Starts Here."</div></div>
+    <div class="footer-brand"><img src="images/enroute%20logo-02.png" alt="Enroute Imports Inc." class="footer-logo-img" onerror="this.style.display='none'"><p>Premium food importers and distributors since 1986. HACCP/GMP Kosher-certified facility in Mississauga, Ontario.</p><div class="footer-slogan">"Healthy Cooking Starts Here."</div></div>
     <div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.htm">Home</a></li><li><a href="aboutus.php">About Us</a></li><li><a href="brands.php">Our Brands</a></li><li><a href="products.php">Products</a></li><li><a href="nutrition.php">Nutrition</a></li><li><a href="contactus.php">Contact</a></li></ul></div>
     <div class="footer-col"><h5>Contact</h5><ul><li><a href="#">1186 Cardiff Blvd., Mississauga ON L5S 1P6</a></li><li><a href="tel:9053622455">905-362-2455</a></li><li><a href="tel:9053622458">905-362-2458 (Fax)</a></li><li><a href="mailto:info@enrouteimports.com">info@enrouteimports.com</a></li></ul></div>
   </div>
