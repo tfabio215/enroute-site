@@ -116,7 +116,7 @@
       </div>
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:32px 28px;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold-light);margin-bottom:16px;font-style:italic;">Retail Brands</div>
-        <p style="font-size:.82rem;color:rgba(255,255,255,.32);line-height:1.8;">Stocking VOILÀ or PRANZO? Get in touch for retail pricing, minimum orders, and pallet information.</p>
+        <p style="font-size:.82rem;color:rgba(255,255,255,.32);line-height:1.8;">Stocking VOIL or PRANZO? Get in touch for retail pricing, minimum orders, and pallet information.</p>
       </div>
     </div>
   </div>

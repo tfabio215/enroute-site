@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enroute Imports Inc. — Our Brands: VOILÀ &amp; Pranzo</title>
-  <meta name="description" content="VOILÀ and PRANZO — Enroute Imports' flagship retail brands. Kosher certified, 0g trans fat, Made in Canada cooking oils for retail and club store channels.">
+  <title>Enroute Imports Inc. — Our Brands: VOIL &amp; Pranzo</title>
+  <meta name="description" content="VOIL and PRANZO — Enroute Imports' flagship retail brands. Kosher certified, 0g trans fat, Made in Canada cooking oils for retail and club store channels.">
   <link href="stylesheet.css" rel="stylesheet">
   <style>
     #nav{background:rgba(10,9,7,.96)!important;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(255,255,255,.06);}
@@ -45,7 +45,7 @@
       <div class="brand-glow v"></div>
       <div class="r up" style="position:relative;z-index:1;">
         <p class="eyebrow light">Flagship Brand</p>
-        <h2><em>VOILÀ</em></h2>
+        <h2><em>VOIL</em></h2>
         <p>Canada's trusted cooking oil brand — light, clean, and versatile. Cholesterol free, no trans fats, Kosher and COR certified. The iconic green and yellow label on retail shelves across Canada.</p>
         <div class="brand-tag-row">
           <span class="brand-tag">Kosher · COR</span>
@@ -58,7 +58,7 @@
           <div style="font-size:.82rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:10px;"><span style="width:4px;height:4px;border-radius:50%;background:var(--gold-light);flex-shrink:0;"></span>Sunflower Oil — 3L bottles (High Oleic)</div>
           <div style="font-size:.82rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:10px;"><span style="width:4px;height:4px;border-radius:50%;background:var(--gold-light);flex-shrink:0;"></span>Soybean Oil — 3L bottles</div>
         </div>
-        <a href="contactus.php" class="btn btn-ghost">Inquire About VOILÀ</a>
+        <a href="contactus.php" class="btn btn-ghost">Inquire About VOIL</a>
       </div>
     </div>
     <div class="brand-half pranzo">
@@ -124,15 +124,15 @@
   </div>
 </section>
 
-<!-- VOILÀ DETAIL -->
+<!-- VOIL DETAIL -->
 <section class="section section--parch">
   <div class="section-inner">
     <div class="two-col flip">
       <div class="left">
         <div class="r">
-          <p class="eyebrow">VOILÀ Brand</p>
+          <p class="eyebrow">VOIL Brand</p>
           <h2 class="display">The label<br><em>Canadians trust</em></h2>
-          <p class="lead" style="margin-bottom:20px;">VOILÀ has been on Canadian retail shelves for decades — recognized by the bold green and yellow label with the COR Kosher certification seal. Cholesterol free, no trans fats, no additives.</p>
+          <p class="lead" style="margin-bottom:20px;">VOIL has been on Canadian retail shelves for decades — recognized by the bold green and yellow label with the COR Kosher certification seal. Cholesterol free, no trans fats, no additives.</p>
           <p class="lead" style="margin-bottom:32px;">Available in Canola, Sunflower (High Oleic), and Soybean oil varieties in 3L bottle format — the ideal retail SKU for grocery and club store channels.</p>
           <div style="display:flex;gap:12px;flex-wrap:wrap;">
             <a href="products.php" class="btn btn-olive">View All Oils</a>

@@ -99,7 +99,7 @@
           <p class="eyebrow">Who We Serve</p>
           <h2 class="display">B2B &amp; <em>Retail</em><br>— both done well</h2>
           <p class="lead" style="margin-bottom:20px;">We primarily cater to <strong>businesses of all sizes</strong> — from retailers to large-scale food manufacturers and distributors — providing flexible packaging options and reliable supply.</p>
-          <p class="lead" style="margin-bottom:28px;">Our products are also available through <strong>supermarket retail channels</strong> under the VOILÀ and PRANZO brands, bringing quality directly to consumers.</p>
+          <p class="lead" style="margin-bottom:28px;">Our products are also available through <strong>supermarket retail channels</strong> under the VOIL and PRANZO brands, bringing quality directly to consumers.</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;">
             <div style="background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);padding:20px;">
               <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Bulk / B2B</div>
@@ -107,7 +107,7 @@
             </div>
             <div style="background:var(--warm);border:1px solid var(--border-light);border-radius:var(--r);padding:20px;">
               <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Retail</div>
-              <div style="font-size:.82rem;color:var(--ink);line-height:1.65;">VOILÀ · PRANZO · Private Label</div>
+              <div style="font-size:.82rem;color:var(--ink);line-height:1.65;">VOIL · PRANZO · Private Label</div>
             </div>
           </div>
         </div>
