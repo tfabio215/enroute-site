@@ -216,6 +216,29 @@
     console.log('✦ Enroute Imports animations loaded');
   }
 
+  // ── Fail-safe loader dismissal ───────────────────────────
+  // The GSAP timeline normally hides the page loader, but if GSAP fails to
+  // load (slow/blocked CDN) its onComplete never fires and the full-screen
+  // loader would sit on top of the whole site — including the nav/menu.
+  // Guarantee the loader always clears regardless of GSAP.
+  function dismissLoader() {
+    const loader = document.getElementById('pageLoader');
+    if (loader && !loader.classList.contains('done')) {
+      loader.classList.add('done');
+      document.body.style.overflow = '';
+      setTimeout(() => { if (loader.parentNode) loader.remove(); }, 800);
+    }
+    // If GSAP never loaded, reveal the hero bits it would have animated in,
+    // so the hero isn't left half-empty.
+    if (typeof gsap === 'undefined') {
+      document.querySelectorAll(
+        '.hero-kicker,.hero-lead,.hero-actions,.hero-trust,.hero-float-tag,.hero-scroll'
+      ).forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    }
+  }
+  window.addEventListener('load', () => setTimeout(dismissLoader, 1600));
+  setTimeout(dismissLoader, 4000);
+
   // ── Boot ─────────────────────────────────────────────────
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAnimations);
