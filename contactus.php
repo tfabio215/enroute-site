@@ -139,8 +139,8 @@
   const nav=document.getElementById('nav'),toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile');
   window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
   toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');});
-  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.07});
-  document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.r,.reveal,.eyebrow,.oil-card,.product-detail-card,.feat,.pack-card,.pranzo-card,.sku-card').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>

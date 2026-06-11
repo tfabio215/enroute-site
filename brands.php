@@ -63,7 +63,6 @@
     </div>
     <div class="brand-half pranzo">
       <div class="brand-glow p"></div>
-      <img class="brand-product-img" src="images/img47.jpg" alt="" aria-hidden="true" onerror="this.style.display='none'">
       <div class="r up" style="position:relative;z-index:1;">
         <p class="eyebrow light">Premium Brand</p>
         <h2><em>Pranzo</em></h2>
@@ -197,6 +196,8 @@
 <script>
   const toggle=document.getElementById('navToggle'),mobile=document.getElementById('navMobile');
   toggle.addEventListener('click',()=>{toggle.classList.toggle('open');mobile.classList.toggle('open');});
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.r,.reveal,.eyebrow,.oil-card,.product-detail-card,.feat,.pack-card,.pranzo-card,.sku-card').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
